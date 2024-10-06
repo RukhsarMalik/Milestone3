@@ -30,7 +30,6 @@ form.addEventListener("submit", (event) => __awaiter(void 0, void 0, void 0, fun
         const degree = group.querySelector(`#degree-${index + 1}`).value;
         const institute = group.querySelector(`#institute-${index + 1}`).value;
         const year = group.querySelector(`#year-${index + 1}`).value;
-        // Create education entry HTML block
         educationHTML += `
             <div class="education-entry">
                 <p><strong>Degree:</strong> ${degree}</p>
@@ -38,7 +37,6 @@ form.addEventListener("submit", (event) => __awaiter(void 0, void 0, void 0, fun
                 <p><strong>Year:</strong> ${year}</p><br>
             </div>`;
     });
-    // Set the innerHTML of resumeEducation to show all education entries
     resumeEducation.innerHTML = educationHTML;
     const experienceGroups = document.querySelectorAll('.experience-group');
     let workExperienceHTML = '';
@@ -47,7 +45,6 @@ form.addEventListener("submit", (event) => __awaiter(void 0, void 0, void 0, fun
         const position = group.querySelector(`#position-${index + 1}`).value;
         const duration = group.querySelector(`#duration-${index + 1}`).value;
         const responsibility = group.querySelector(`#responsibility-${index + 1}`).value;
-        // Generate work experience HTML block
         workExperienceHTML += `
             <div class="work-experience-entry">
                 <p><strong>Company:</strong> ${company}</p>
@@ -100,6 +97,7 @@ function filetoBase64(file) {
 }
 ;
 (_a = document.getElementById("addExperienceButton")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", () => {
+    var _a;
     const experienceSection = document.getElementById("experience-group");
     const newIndex = document.querySelectorAll(".experience-group").length + 1;
     const newExperienceHTML = `
@@ -122,13 +120,18 @@ function filetoBase64(file) {
             <label for="responsibility-${newIndex}">Responsibilities:</label>
             <input type="text" name="responsibility" id="responsibility-${newIndex}" placeholder="Developed Software">
         </div>
+        <button type="button" class="closeExperienceButton" data-index="${newIndex}">Close</button>
     `;
     const newExperienceDiv = document.createElement('div');
     newExperienceDiv.classList.add('experience-group');
     newExperienceDiv.innerHTML = newExperienceHTML;
     experienceSection === null || experienceSection === void 0 ? void 0 : experienceSection.appendChild(newExperienceDiv);
+    (_a = newExperienceDiv.querySelector('.closeExperienceButton')) === null || _a === void 0 ? void 0 : _a.addEventListener("click", function () {
+        newExperienceDiv.remove();
+    });
 });
 (_b = document.getElementById("addEducationButton")) === null || _b === void 0 ? void 0 : _b.addEventListener("click", () => {
+    var _a;
     const educationSection = document.getElementById("education-group");
     const newIndex = document.querySelectorAll(".education-group").length + 1;
     const newEducationHTML = `
@@ -146,9 +149,13 @@ function filetoBase64(file) {
             <label for="year-${newIndex}">Passing Year:</label>
             <input type="text" name="year" id="year-${newIndex}" placeholder="2015-2018">
         </div>
+        <button type="button" class="closeEducationButton" data-index="${newIndex}">Close</button>
     `;
     const newEducationDiv = document.createElement('div');
     newEducationDiv.classList.add('education-group');
     newEducationDiv.innerHTML = newEducationHTML;
     educationSection === null || educationSection === void 0 ? void 0 : educationSection.appendChild(newEducationDiv);
+    (_a = newEducationDiv.querySelector('.closeEducationButton')) === null || _a === void 0 ? void 0 : _a.addEventListener("click", function () {
+        newEducationDiv.remove();
+    });
 });
