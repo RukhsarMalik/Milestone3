@@ -137,6 +137,7 @@ document.getElementById("addExperienceButton")?.addEventListener("click", () => 
             <label for="responsibility-${newIndex}">Responsibilities:</label>
             <input type="text" name="responsibility" id="responsibility-${newIndex}" placeholder="Developed Software">
         </div>
+        <button type="button" class="closeExperienceButton" data-index="${newIndex}">Close</button>
     `;
 
     const newExperienceDiv = document.createElement('div');
@@ -144,6 +145,9 @@ document.getElementById("addExperienceButton")?.addEventListener("click", () => 
     newExperienceDiv.innerHTML = newExperienceHTML;
 
     experienceSection?.appendChild(newExperienceDiv);
+    newExperienceDiv.querySelector('.closeExperienceButton')?.addEventListener("click", function () {
+        newExperienceDiv.remove();
+    });
 });
 
 document.getElementById("addEducationButton")?.addEventListener("click", () => {
@@ -165,6 +169,7 @@ document.getElementById("addEducationButton")?.addEventListener("click", () => {
             <label for="year-${newIndex}">Passing Year:</label>
             <input type="text" name="year" id="year-${newIndex}" placeholder="2015-2018">
         </div>
+        <button type="button" class="closeEducationButton" data-index="${newIndex}">Close</button>
     `;
 
     const newEducationDiv = document.createElement('div');
@@ -172,4 +177,7 @@ document.getElementById("addEducationButton")?.addEventListener("click", () => {
     newEducationDiv.innerHTML = newEducationHTML;
 
     educationSection?.appendChild(newEducationDiv);
+    newEducationDiv.querySelector('.closeEducationButton')?.addEventListener("click", function () {
+        newEducationDiv.remove();
+    });
 });
